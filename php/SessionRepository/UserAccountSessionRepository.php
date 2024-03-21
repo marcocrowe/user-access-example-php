@@ -1,8 +1,8 @@
 <?php
 
 declare(strict_types=1);
-require_once("src/DataObjects/UserAccount.php");
-require_once("src/Repository/UserAccountRepository.php");
+require_once("php/DataObjects/UserAccount.php");
+require_once("php/Repository/UserAccountRepository.php");
 
 class UserAccountSessionRepository implements UserAccountRepository
 {

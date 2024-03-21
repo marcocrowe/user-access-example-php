@@ -1,6 +1,6 @@
 <?php
-require_once("src/pagesupport/RegisterHtmlTagNames.php");
-require_once("src/WebPages.php");
+require_once("php/pagesupport/RegisterHtmlTagNames.php");
+require_once("php/WebPages.php");
 ?>
 <!DOCTYPE html>
 <html>

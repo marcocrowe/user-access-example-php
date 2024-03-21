@@ -1,7 +1,7 @@
 <?php
-require_once("src/pagesupport/RegisterHtmlTagNames.php");
-require_once("src/pagesupport/UserAccountHtmlTagNames.php");
-require_once("src/Program.php");
+require_once("php/pagesupport/RegisterHtmlTagNames.php");
+require_once("php/pagesupport/UserAccountHtmlTagNames.php");
+require_once("php/Program.php");
 ?>
 <!DOCTYPE html>
 <html>

@@ -1,6 +1,6 @@
 <?php
-require_once("src/Program.php");
-require_once("src/pagesupport/LoginHtmlTagNames.php");
+require_once("php/Program.php");
+require_once("php/pagesupport/LoginHtmlTagNames.php");
 ?>
 <!DOCTYPE html>
 <html>

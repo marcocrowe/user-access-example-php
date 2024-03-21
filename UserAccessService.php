@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
-require_once("src/DataObjects/UserAccountLoginResult.php");
-require_once("src/pagesupport/LoginHtmlTagNames.php");
-require_once("src/Program.php");
+require_once("php/DataObjects/UserAccountLoginResult.php");
+require_once("php/pagesupport/LoginHtmlTagNames.php");
+require_once("php/Program.php");
 ?>
 <html>
     <head>
