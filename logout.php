@@ -1,31 +1,18 @@
 <?php
-require_once("src/pagesupport/RegisterHtmlTagNames.php");
 require_once("src/Program.php");
+require_once("src/pagesupport/LoginHtmlTagNames.php");
+
+UserSessionManagement::LogoutCurrentUser();
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
+	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>PHP Access Web Example: Login</title>
 	</head>
 	<body>
-		<?php UserSessionManagement::HandleUserAccess() ?>
 		<h1>PHP Access Web Example</h1>
-		<h2>Users</h2>
-		<table>
-			<?php
-			foreach($userDatabase->GetUserAccounts() as $user)
-			{
-				?>
-				<tr>
-					<td><?php echo $user->getUsername(); ?></td>
-					<td><?php echo $user->getEmail(); ?></td>
-					<td><?php echo $user->getActive(); ?></td>
-				</tr>
-				<?php
-			}
-			?>
-		</table>
+		<h2>Logout</h2>
 		<nav>
 			<ul>
 				<li><a href="login.php">Login</a></li>
@@ -34,6 +21,5 @@ require_once("src/Program.php");
 				<li><a href="logout.php">Logout</a></li>
 			</ul>
 		</nav>
-
-    </body>
+	</body>
 </html>

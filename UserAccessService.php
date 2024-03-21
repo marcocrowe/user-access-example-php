@@ -24,6 +24,8 @@ require_once("src/Program.php");
 			<?php
 			$userAccount = $userDatabase->Login($username, $password);
 			$loginResult = UserAccountLoginResult::GetLoginResult($userAccount);
+			if($loginResult==UserAccountLoginResult::Success)
+				UserSessionManagement::LoginUser($userAccount);
 			$loginResultMessage = UserAccountLoginResult::GetLoginMessage($loginResult);
 			?>
 			<h3>
@@ -32,5 +34,13 @@ require_once("src/Program.php");
 			<?php
 		}
 		?>
+		<nav>
+			<ul>
+				<li><a href="login.php">Login</a></li>
+				<li><a href="register.php">Register</a></li>
+				<li><a href="userlist.php">Users</a></li>
+				<li><a href="logout.php">Logout</a></li>
+			</ul>
+		</nav>
     </body>
 </html>
