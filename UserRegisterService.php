@@ -40,15 +40,18 @@ require_once("php/Program.php");
 				<h2>Register Button Pressed</h2>
 				<?php
 				$username = filter_input(INPUT_POST, RegisterHtmlTagNames::UsernameInput);
+				$name = filter_input(INPUT_POST, RegisterHtmlTagNames::NameInput);
 				$email = filter_input(INPUT_POST, RegisterHtmlTagNames::EmailInput);
 				$password = filter_input(INPUT_POST, RegisterHtmlTagNames::PasswordInput);
 				$confirmPassword = filter_input(INPUT_POST, RegisterHtmlTagNames::ConfirmPasswordInput);
 
 				$userAccount = UserAccount::Construct(true, 0, $email, $username);
-
+				$userAccount->setName($name);
+				
 				$userDatabase->CreateUserAccount($userAccount, $password);
 				?>
 				<h2>Username:<?php echo $userAccount->getUsername(); ?></h2>
+				<h2>Name:<?php echo $userAccount->getName(); ?></h2>
 				<h2>email:<?php echo $userAccount->getEmail(); ?></h2>
 				<h2>Password:<?php echo $password; ?></h2>
 				<h2>Confirm Password:<?php echo $confirmPassword; ?></h2>

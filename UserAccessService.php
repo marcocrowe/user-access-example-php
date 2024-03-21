@@ -46,7 +46,7 @@ require_once("php/Program.php");
 				<h2>Username:<?php echo $username; ?></h2>
 				<h2>Password:<?php echo $password; ?></h2>
 				<?php
-				$userAccount = $userDatabase->Login($username, $password);
+				$userAccount = $userDatabase->GetUserAccountByCredentials($username, $password);
 				$loginResult = UserAccountLoginResult::GetLoginResult($userAccount);
 				if($loginResult == UserAccountLoginResult::Success)
 					UserSessionManagement::LoginUser($userAccount);

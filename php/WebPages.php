@@ -10,4 +10,5 @@ class WebPages
 	public const register = " register.php";
 	public const userAccounts = "useraccounts.php";
 	public const userAccount = "useraccount.php";
+	public const userAccountEdit = "useraccountedit.php";
 }

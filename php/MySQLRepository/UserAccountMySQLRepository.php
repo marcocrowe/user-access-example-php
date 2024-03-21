@@ -3,7 +3,6 @@
 declare(strict_types=1);
 require_once("php/DataObjects/UserAccount.php");
 require_once("php/Repository/UserAccountRepository.php");
-require_once("php/Repository/UserAccountRepository.php");
 
 class UserAccountMySQLRepository implements UserAccountRepository
 {
@@ -47,6 +46,19 @@ class UserAccountMySQLRepository implements UserAccountRepository
 	{
 		$sqlCommandText = "GetUserAccountById(?);";
 		$sqlCommandParameters = [$userAccountId];
+
+		$pdoStatement = $this->connection->prepare($sqlCommandText);
+		$pdoStatement->execute($sqlCommandParameters);
+		$rowCount = $pdoStatement->rowCount();
+		$datarow = $pdoStatement->fetch();
+		$pdoStatement->closeCursor();
+
+		return ($rowCount > 0) ? self::Transform($datarow) : null;
+	}
+	public function GetUserAccountByCredentials(string $username, string $password): ?UserAccount
+	{
+		$sqlCommandText = "GetUserAccountByCredentials(?, ?);";
+		$sqlCommandParameters = [self::HashPassword($password), $username];
 		//$sqlCommandParameters = [$password, $username];
 
 		$pdoStatement = $this->connection->prepare($sqlCommandText);
@@ -59,8 +71,9 @@ class UserAccountMySQLRepository implements UserAccountRepository
 	}
 	public function GetUserAccounts(): array
 	{
-		$sqlQuery = 'SELECT * FROM ' . UserAccessWebExampleDatabaseTables::UserAccount;
-		$pdoStatement = $this->connection->prepare($sqlQuery);
+		$sqlCommandText = "GetUserAccounts();";
+
+		$pdoStatement = $this->connection->prepare($sqlCommandText);
 		$pdoStatement->execute();
 
 		$userAccountList = array();
@@ -74,36 +87,20 @@ class UserAccountMySQLRepository implements UserAccountRepository
 	}
 	public function UpdateUserAccount(UserAccount $userAccount, string $password)
 	{
-		$sqlCommandText = "UpdateUserAccount(?, ?, ?, ?, ?, ?);";
+		$sqlCommandText = "UpdateUserAccount(?, ?, ?, ?, ?);";
 		$sqlCommandParameters = [
 			$userAccount->getActive(),
 			$userAccount->getEmail(),
 			$userAccount->getId(),
 			$userAccount->getName(),
-			self::HashPassword($password),
 			$userAccount->getUsername()];
+
+		//self::HashPassword($password),
 
 		$pdoStatement = $this->connection->prepare($sqlCommandText);
 		$success = $pdoStatement->execute($sqlCommandParameters);
 		$pdoStatement->closeCursor();
 		return $success;
-	}
-	//
-	//	Public Methods
-	//
-	public function Login(string $username, string $password): ?UserAccount
-	{
-		$sqlCommandText = "Login(?, ?);";
-		$sqlCommandParameters = [self::HashPassword($password), $username];
-		//$sqlCommandParameters = [$password, $username];
-
-		$pdoStatement = $this->connection->prepare($sqlCommandText);
-		$pdoStatement->execute($sqlCommandParameters);
-		$rowCount = $pdoStatement->rowCount();
-		$datarow = $pdoStatement->fetch();
-		$pdoStatement->closeCursor();
-
-		return ($rowCount > 0) ? self::Transform($datarow) : null;
 	}
 	//
 	//	Protected Static Methods

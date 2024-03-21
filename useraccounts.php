@@ -43,6 +43,8 @@ require_once("php/Program.php");
 						<th>e-mail</th>
 						<th>Active</th>
 						<th>&nbsp;</th>
+						<th>&nbsp;</th>
+						<th>&nbsp;</th>
 					</tr>
 				</thead>
 				<?php
@@ -54,6 +56,8 @@ require_once("php/Program.php");
 						<td><?php echo $user->getEmail(); ?></td>
 						<td><?php echo json_encode($user->getActive()); ?></td>
 						<td><a href="<?php echo WebPages::userAccount . "?" . UserAccountHtmlTagNames::Id . "=" . $user->getId(); ?>">view</a></td>
+						<td><a href="<?php echo WebPages::userAccountEdit . "?" . UserAccountHtmlTagNames::Id . "=" . $user->getId(); ?>">edit</a></td>
+						<td><a href="<?php echo WebPages::userAccountEdit . "?" . UserAccountHtmlTagNames::Id . "=" . $user->getId(); ?>">delete</a></td>
 					</tr>
 					<?php
 				}

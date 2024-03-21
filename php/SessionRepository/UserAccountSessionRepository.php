@@ -19,6 +19,12 @@ class UserAccountSessionRepository implements UserAccountRepository
 	//
 	//	Public Methods
 	//
+	public function CreateUserAccount(UserAccount $userAccount, string $password)
+	{
+		$userAccount->setId(count($this->users) + 1);
+		$this->SaltPassword($password);
+		array_push($this->users, $userAccount);
+	}
 	public function GetUserAccountById($id): ?UserAccount
 	{
 		foreach($this->users as $user)
@@ -30,7 +36,7 @@ class UserAccountSessionRepository implements UserAccountRepository
 		}
 		return null;
 	}
-	public function Login(string $username, string $password): ?UserAccount
+	public function GetUserAccountByCredentials(string $username, string $password): ?UserAccount
 	{
 		foreach($this->users as $user)
 		{
@@ -40,11 +46,6 @@ class UserAccountSessionRepository implements UserAccountRepository
 			}
 		}
 		return null;
-	}
-	public function CreateUserAccount(UserAccount $userAccount, string $password)
-	{
-		$this->SaltPassword($password);
-		array_push($this->users, $userAccount);
 	}
 	public function SaltPassword(string $password): string
 	{
