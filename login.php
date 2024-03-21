@@ -1,5 +1,5 @@
 <?php
-require_once("src/LoginHtmlTagNames.php");
+require_once("src/pagesupport/LoginHtmlTagNames.php");
 ?>
 <!DOCTYPE html>
 <html>
