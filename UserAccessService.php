@@ -12,6 +12,7 @@ require_once("src/LoginHtmlTagNames.php");
 		{
 			echo 'Login Button Pressed';
 			$username = $_POST[LoginHtmlTagNames::UsernameInput];
+			$username = $_POST[LoginHtmlTagNames::UsernameInput];
 			echo $username;
 		}
 		// put your code here
