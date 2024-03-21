@@ -43,10 +43,10 @@ class UserAccountMySQLRepository implements UserAccountRepository
 		$pdoStatement->closeCursor();
 		return $success;
 	}
-	public function GetUserAccountById(int $id): ?UserAccount
+	public function GetUserAccountById(int $userAccountId): ?UserAccount
 	{
 		$sqlCommandText = "GetUserAccountById(?);";
-		$sqlCommandParameters = [self::HashPassword($password), $username];
+		$sqlCommandParameters = [$userAccountId];
 		//$sqlCommandParameters = [$password, $username];
 
 		$pdoStatement = $this->connection->prepare($sqlCommandText);
