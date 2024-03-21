@@ -1,4 +1,5 @@
 <?php
+require_once("src/Program.php");
 require_once("src/pagesupport/LoginHtmlTagNames.php");
 ?>
 <!DOCTYPE html>
@@ -36,33 +37,33 @@ require_once("src/pagesupport/LoginHtmlTagNames.php");
 			</tr>
 			<tr>
 				<td>Username:</td>
-				<td>user</td>
+				<td><?php echo $userDatabase->getActiveUser()->getUsername()?></td>
 			</tr>
 			<tr>
 				<td>Password:</td>
-				<td>password</td>
+				<td><?php echo UserDatabase::DefaultPassowrd ?></td>
 			</tr>
 			<tr>
 				<td colspan="2">Disabled User Account</td>
 			</tr>
 			<tr>
 				<td>Username:</td>
-				<td>user1</td>
+				<td><?php echo $userDatabase->getDisabledUser()->getUsername()?></td>
 			</tr>
 			<tr>
 				<td>Password:</td>
-				<td>password</td>
+				<td><?php echo UserDatabase::DefaultPassowrd ?></td>
 			</tr>
 			<tr>
 				<td colspan="2">Incorrect Login details</td>
 			</tr>
 			<tr>
 				<td>Username:</td>
-				<td>user</td>
+				<td>anything</td>
 			</tr>
 			<tr>
 				<td>Password:</td>
-				<td>123</td>
+				<td>anything</td>
 			</tr>
 		</table>
 	</body>

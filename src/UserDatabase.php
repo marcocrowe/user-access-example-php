@@ -5,9 +5,18 @@ require_once("UserAccount.php");
 class UserDatabase
 {
 
-	const DefaultPassowrd = "password";
+	public const DefaultPassowrd = "password";
+	public function getActiveUser()
+	{
+		return $this->activeUser;
+	}
 
-	function __construct()
+	public function getDisabledUser()
+	{
+		return $this->disabledUser;
+	}
+
+		function __construct()
 	{
 		$this->activeUser = new UserAccount("user", "user@roreply.com", true);
 		$this->disabledUser = new UserAccount("user1", "user@roreply.comcom", false);
