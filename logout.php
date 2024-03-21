@@ -1,4 +1,7 @@
 <?php require_once("app/autoload.php"); ?>
+<?php
+use UserAccessExample\UserSessionManagement;
+?>
 <?php UserSessionManagement::LogoutCurrentUser(); ?>
 <!DOCTYPE html>
 <html>

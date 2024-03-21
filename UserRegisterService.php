@@ -1,4 +1,8 @@
 <?php require_once("app/autoload.php"); ?>
+<?php
+use UserAccessExample\Application;
+use UserAccessExample\Repository\UserAccount;
+?>
 <!DOCTYPE html>
 <html>
     <head>

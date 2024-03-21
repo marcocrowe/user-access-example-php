@@ -1,5 +1,7 @@
 <?php
 
+namespace UserAccessExample\Repository;
+
 class UserAccount
 {
 	function __construct()

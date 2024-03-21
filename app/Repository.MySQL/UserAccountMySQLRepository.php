@@ -1,5 +1,12 @@
 <?php
 
+namespace UserAccessExample\Repository\MySQL;
+
+use UserAccessExample\Repository\UserAccount;
+use UserAccessExample\Repository\UserAccountRepository;
+/**
+ * Repository provides MySQL CRUD functionality for User Accounts
+ */
 class UserAccountMySQLRepository implements UserAccountRepository
 {
 	function __construct(PDO $connection)

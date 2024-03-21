@@ -1,5 +1,7 @@
 <?php
 
+namespace UserAccessExample;
+
 class UserSessionManagement
 {
 	public static function HandleUserAccess()

@@ -1,12 +1,20 @@
 <?php
 
-Application::Main();
+namespace UserAccessExample;
+
+use UserAccessExample\Repository\Session\UserAccountSessionRepository;
 /**
- * Description of Application
+ * User Access Example Application, start
  */
-class Application
+abstract class Application
 {
 	public static UserAccountSessionRepository $UserAccountRepository;
+	//
+	//	Methods
+	//
+	/**
+	 * Main Call to start application
+	 */
 	public static function Main()
 	{
 		session_start();
@@ -22,3 +30,7 @@ class Application
 		}
 	}
 }
+//
+//	Application start
+//
+Application::Main();

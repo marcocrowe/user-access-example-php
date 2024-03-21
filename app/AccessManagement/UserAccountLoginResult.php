@@ -1,5 +1,7 @@
 <?php
 
+namespace UserAccessExample;
+
 abstract class UserAccountLoginResult
 {
 	//

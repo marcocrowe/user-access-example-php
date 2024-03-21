@@ -1,5 +1,7 @@
 <?php
 
+namespace UserAccessExample\Repository;
+
 /**
  * Repository provides CRUD functionality for User Accounts
  */

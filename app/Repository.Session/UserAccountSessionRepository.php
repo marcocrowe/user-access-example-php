@@ -1,5 +1,9 @@
 <?php
 
+namespace UserAccessExample\Repository\Session;
+
+use UserAccessExample\Repository\UserAccount;
+use UserAccessExample\Repository\UserAccountRepository;
 /**
  * Repository provides CRUD functionality for User Accounts held in Session Memory
  */
