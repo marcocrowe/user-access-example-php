@@ -9,6 +9,7 @@ require_once("src/Program.php");
 		<title>PHP Access Web Example: Login</title>
 	</head>
 	<body>
+		<?php UserSessionManagement::HandleUserAccess() ?>
 		<h1>PHP Access Web Example</h1>
 		<h2>Users</h2>
 		<table>

@@ -1,22 +1,22 @@
 <?php
 
 require_once("SessionRepository/UserAccountSessionRepository.php");
+require_once("UserSessionManagement.php");
 
 
-$userDatabaseSessionKey = "database";
 
 session_start();
 
 $userDatabase;
 
-$_SESSION[$userDatabaseSessionKey]= null;
+$_SESSION[SessionKeys::UserDatabase] = null;
 
-if(isset($_SESSION[$userDatabaseSessionKey]))
+if(isset($_SESSION[SessionKeys::UserDatabase]))
 {
-	$userDatabase = $_SESSION[$userDatabaseSessionKey];
+	$userDatabase = $_SESSION[SessionKeys::UserDatabase];
 }
 else
 {
 	$userDatabase = new UserAccountSessionRepository();
-	$_SESSION[$userDatabaseSessionKey] = $userDatabase;
+	$_SESSION[SessionKeys::UserDatabase] = $userDatabase;
 }
