@@ -19,7 +19,9 @@ require_once("src/Program.php");
 			$password = filter_input(INPUT_POST, RegisterHtmlTagNames::PasswordInput);
 			$confirmPassword = filter_input(INPUT_POST, RegisterHtmlTagNames::ConfirmPasswordInput);
 
-			$userDatabase->Register($username, $email, $password);
+			$userAccount = UserAccount::Construct(true, $email, $username);
+
+			$userDatabase->CreateUserAccount($userAccount, $password);
 			?>
 			<h2>Username:<?php echo $username; ?></h2>
 			<h2>email:<?php echo $email; ?></h2>

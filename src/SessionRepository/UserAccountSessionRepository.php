@@ -30,11 +30,10 @@ class UserAccountSessionRepository implements UserAccountRepository
 		}
 		return null;
 	}
-	public function Register(string $username, string $email, string $password)
+	public function CreateUserAccount(UserAccount $userAccount, string $password)
 	{
-		$newUser = new UserAccount($username, $email, true);
 		$this->SaltPassword($password);
-		array_push($this->users, $newUser);
+		array_push($this->users, $userAccount);
 	}
 	public function SaltPassword(string $password): string
 	{
