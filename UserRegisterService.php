@@ -1,5 +1,6 @@
 <?php
 require_once("src/pagesupport/RegisterHtmlTagNames.php");
+require_once("src/Program.php");
 ?>
 <html>
     <head>
@@ -8,7 +9,7 @@ require_once("src/pagesupport/RegisterHtmlTagNames.php");
     </head>
     <body>
 		<?php
-		if (isset($_POST[RegisterHtmlTagNames::RegisterButton]))
+		if(isset($_POST[RegisterHtmlTagNames::RegisterButton]))
 		{
 			?>
 			<h1>Register Button Pressed</h1>
@@ -17,6 +18,8 @@ require_once("src/pagesupport/RegisterHtmlTagNames.php");
 			$email = $_POST[RegisterHtmlTagNames::EmailInput];
 			$password = $_POST[RegisterHtmlTagNames::PasswordInput];
 			$confirmPassword = $_POST[RegisterHtmlTagNames::ConfirmPasswordInput];
+
+			$userDatabase->Register($username, $email, $password);
 			?>
 			<h2>Username:<?php echo $username; ?></h2>
 			<h2>email:<?php echo $email; ?></h2>

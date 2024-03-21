@@ -31,28 +31,36 @@ require_once("src/pagesupport/LoginHtmlTagNames.php");
 				</tr>
 			</table>
 		</form>
+		<nav>
+			<ul>
+				<li><a href="login.php">Login</a></li>
+				<li><a href="register.php">Register</a></li>
+				<li><a href="userlist.php">Users</a></li>
+			</ul>
+		</nav>
+
 		<table>
 			<tr>
 				<td colspan="2">Active User Account</td>
 			</tr>
 			<tr>
 				<td>Username:</td>
-				<td><?php echo $userDatabase->getActiveUser()->getUsername()?></td>
+				<td><?php echo $userDatabase->getActiveUser()->getUsername() ?></td>
 			</tr>
 			<tr>
 				<td>Password:</td>
-				<td><?php echo UserDatabase::DefaultPassowrd ?></td>
+				<td><?php echo UserAccountRepository::DefaultPassowrd ?></td>
 			</tr>
 			<tr>
 				<td colspan="2">Disabled User Account</td>
 			</tr>
 			<tr>
 				<td>Username:</td>
-				<td><?php echo $userDatabase->getDisabledUser()->getUsername()?></td>
+				<td><?php echo $userDatabase->getDisabledUser()->getUsername() ?></td>
 			</tr>
 			<tr>
 				<td>Password:</td>
-				<td><?php echo UserDatabase::DefaultPassowrd ?></td>
+				<td><?php echo UserAccountRepository::DefaultPassowrd ?></td>
 			</tr>
 			<tr>
 				<td colspan="2">Incorrect Login details</td>

@@ -1,7 +1,21 @@
 <?php
 
-require_once("UserAccount.php");
-require_once("UserDatabase.php");
+require_once("Repository/UserAccountRepository.php");
 
-$userDatabase = new UserDatabase();
-?>
+
+$userDatabaseSessionKey = "database";
+
+session_start();
+
+$userDatabase;
+
+
+if(isset($_SESSION[$userDatabaseSessionKey]))
+{
+	$userDatabase = $_SESSION[$userDatabaseSessionKey];
+}
+else
+{
+	$userDatabase = new UserAccountRepository();
+	$_SESSION[$userDatabaseSessionKey] = $userDatabase;
+}

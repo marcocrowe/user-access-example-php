@@ -26,7 +26,7 @@ require_once("src/pagesupport/RegisterHtmlTagNames.php");
 				</tr>
 				<tr>
 					<td>Confirm Password:</td>
-					<td><input name="<?php echo RegisterHtmlTagNames::ConfirmPasswordInput?>" type="password" /></td>
+					<td><input name="<?php echo RegisterHtmlTagNames::ConfirmPasswordInput ?>" type="password" /></td>
 				</tr>
 				<tr>
 					<td></td>
@@ -38,5 +38,13 @@ require_once("src/pagesupport/RegisterHtmlTagNames.php");
 				</tr>
 			</table>
 		</form>
+		<nav>
+			<ul>
+				<li><a href="login.php">Login</a></li>
+				<li><a href="register.php">Register</a></li>
+				<li><a href="userlist.php">Users</a></li>
+			</ul>
+		</nav>
+
 	</body>
 </html>
