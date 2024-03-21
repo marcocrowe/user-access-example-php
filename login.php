@@ -10,7 +10,7 @@ require_once("src/LoginHtmlTagNames.php");
 	<body>
 		<h1>PHP Access Web Example</h1>
 		<h2>Login</h2>
-		<form action="" method="post">
+		<form action="<?php echo LoginHtmlTagNames::FormActionPage ?>" method="post">
 			<table>
 				<tr>
 					<td>Username:</td>
@@ -22,7 +22,11 @@ require_once("src/LoginHtmlTagNames.php");
 				</tr>
 				<tr>
 					<td></td>
-					<td><input name="LoginButton" type="submit" value="Login" /></td>
+					<td><input name="<?php echo LoginHtmlTagNames::LoginButton ?>" type="submit" value="Login" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input name="OtherButton" type="submit" value="Other Button" /></td>
 				</tr>
 			</table>
 		</form>
