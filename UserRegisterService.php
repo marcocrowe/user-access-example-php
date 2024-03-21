@@ -5,19 +5,19 @@ require_once("src/Program.php");
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>User Account Repository</title>
     </head>
     <body>
 		<?php
-		if(isset($_POST[RegisterHtmlTagNames::RegisterButton]))
+		if(isset(filter_input(INPUT_POST, RegisterHtmlTagNames::RegisterButton)))
 		{
 			?>
 			<h1>Register Button Pressed</h1>
 			<?php
-			$username = $_POST[RegisterHtmlTagNames::UsernameInput];
-			$email = $_POST[RegisterHtmlTagNames::EmailInput];
-			$password = $_POST[RegisterHtmlTagNames::PasswordInput];
-			$confirmPassword = $_POST[RegisterHtmlTagNames::ConfirmPasswordInput];
+			$username = filter_input(INPUT_POST, RegisterHtmlTagNames::UsernameInput);
+			$email = filter_input(INPUT_POST, RegisterHtmlTagNames::EmailInput);
+			$password = filter_input(INPUT_POST, RegisterHtmlTagNames::PasswordInput);
+			$confirmPassword = filter_input(INPUT_POST, RegisterHtmlTagNames::ConfirmPasswordInput);
 
 			$userDatabase->Register($username, $email, $password);
 			?>

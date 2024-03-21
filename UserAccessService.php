@@ -1,43 +1,35 @@
 <?php
+declare(strict_types=1);
+require_once("src/DataObjects/UserAccountLoginResult.php");
 require_once("src/pagesupport/LoginHtmlTagNames.php");
 require_once("src/Program.php");
 ?>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>User Login Service</title>
     </head>
     <body>
 		<?php
-		if (isset($_POST[LoginHtmlTagNames::LoginButton]))
+		if(filter_input(INPUT_POST, LoginHtmlTagNames::LoginButton) != null)
 		{
 			?>
 			<h1>Login Button Pressed</h1>
 			<?php
-			$username = $_POST[LoginHtmlTagNames::UsernameInput];
-			$password = $_POST[LoginHtmlTagNames::PasswordInput];
+			$username = filter_input(INPUT_POST, LoginHtmlTagNames::UsernameInput);
+			$password = filter_input(INPUT_POST, LoginHtmlTagNames::PasswordInput);
 			?>
 			<h2>Username:<?php echo $username; ?></h2>
 			<h2>Password:<?php echo $password; ?></h2>
 			<?php
-			$user = $userDatabase->Login($username, $password);
-
-			if (isset($user) && $user->getActive())
-			{
-				?>
-				<h3>Login Successful</h3>
-				<?php
-			} else if (isset($user) && $user->getActive() == false)
-			{
-				?>
-				<h3>User Login Disabled</h3>
-				<?php
-			} else
-			{
-				?>
-				<h3>Login Failed</h3>
-				<?php
-			}
+			$userAccount = $userDatabase->Login($username, $password);
+			$loginResult = UserAccountLoginResult::GetLoginResult($userAccount);
+			$loginResultMessage = UserAccountLoginResult::GetLoginMessage($loginResult);
+			?>
+			<h3>
+				<?php echo $loginResultMessage ?>
+			</h3>
+			<?php
 		}
 		?>
     </body>

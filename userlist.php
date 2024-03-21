@@ -13,7 +13,7 @@ require_once("src/Program.php");
 		<h2>Users</h2>
 		<table>
 			<?php
-			foreach($userDatabase->getUsers() as $user)
+			foreach($userDatabase->GetUserAccounts() as $user)
 			{
 				?>
 				<tr>

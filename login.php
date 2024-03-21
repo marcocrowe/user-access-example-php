@@ -49,7 +49,7 @@ require_once("src/pagesupport/LoginHtmlTagNames.php");
 			</tr>
 			<tr>
 				<td>Password:</td>
-				<td><?php echo UserAccountRepository::DefaultPassowrd ?></td>
+				<td><?php echo UserAccountSessionRepository::DefaultPassowrd ?></td>
 			</tr>
 			<tr>
 				<td colspan="2">Disabled User Account</td>
@@ -60,7 +60,7 @@ require_once("src/pagesupport/LoginHtmlTagNames.php");
 			</tr>
 			<tr>
 				<td>Password:</td>
-				<td><?php echo UserAccountRepository::DefaultPassowrd ?></td>
+				<td><?php echo UserAccountSessionRepository::DefaultPassowrd ?></td>
 			</tr>
 			<tr>
 				<td colspan="2">Incorrect Login details</td>
