@@ -1,4 +1,4 @@
-<?php require_once("app/require_once.php"); ?>
+<?php require_once("app/autoload.php"); ?>
 <?php UserSessionManagement::LogoutCurrentUser(); ?>
 <!DOCTYPE html>
 <html>
