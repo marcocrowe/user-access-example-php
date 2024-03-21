@@ -30,5 +30,40 @@ require_once("src/pagesupport/LoginHtmlTagNames.php");
 				</tr>
 			</table>
 		</form>
+		<table>
+			<tr>
+				<td colspan="2">Active User Account</td>
+			</tr>
+			<tr>
+				<td>Username:</td>
+				<td>user</td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td>password</td>
+			</tr>
+			<tr>
+				<td colspan="2">Disabled User Account</td>
+			</tr>
+			<tr>
+				<td>Username:</td>
+				<td>user1</td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td>password</td>
+			</tr>
+			<tr>
+				<td colspan="2">Incorrect Login details</td>
+			</tr>
+			<tr>
+				<td>Username:</td>
+				<td>user</td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td>123</td>
+			</tr>
+		</table>
 	</body>
 </html>
