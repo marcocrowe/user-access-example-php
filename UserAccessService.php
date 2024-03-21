@@ -20,7 +20,6 @@ require_once("src/Program.php");
 			<h2>Username:<?php echo $username; ?></h2>
 			<h2>Password:<?php echo $password; ?></h2>
 			<?php
-			$userDatabase = new UserDatabase();
 			$user = $userDatabase->Login($username, $password);
 
 			if (isset($user) && $user->getActive())
