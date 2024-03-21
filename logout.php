@@ -1,9 +1,5 @@
-<?php
-require_once("php/Program.php");
-require_once("php/pagesupport/LoginHtmlTagNames.php");
-
-UserSessionManagement::LogoutCurrentUser();
-?>
+<?php require_once("app/require_once.php"); ?>
+<?php UserSessionManagement::LogoutCurrentUser(); ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -18,7 +14,7 @@ UserSessionManagement::LogoutCurrentUser();
 		<!--<link rel="shortcut icon" href="resource/icon/favicon.ico" />-->
 		<!--</Icon>-->
 		<!--<Stylesheets OrderIsImportant="true">-->
-		<link rel="stylesheet" href="resource/css/stylesheet.css" />
+		<link rel="stylesheet" href="src/css/stylesheet.css" />
 		<!--</Stylesheets>-->
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	</head>

@@ -1,7 +1,5 @@
-<?php
-require_once("php/pagesupport/RegisterHtmlTagNames.php");
-require_once("php/Program.php");
-?>
+<?php require_once("app/require_once.php"); ?>
+<!DOCTYPE html>
 <html>
     <head>
         <title>User Account Repository</title>
@@ -15,7 +13,7 @@ require_once("php/Program.php");
 		<!--<link rel="shortcut icon" href="resource/icon/favicon.ico" />-->
 		<!--</Icon>-->
 		<!--<Stylesheets OrderIsImportant="true">-->
-		<link rel="stylesheet" href="resource/css/stylesheet.css" />
+		<link rel="stylesheet" href="src/css/stylesheet.css" />
 		<!--</Stylesheets>-->
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
@@ -47,8 +45,8 @@ require_once("php/Program.php");
 
 				$userAccount = UserAccount::Construct(true, 0, $email, $username);
 				$userAccount->setName($name);
-				
-				$userDatabase->CreateUserAccount($userAccount, $password);
+
+				Application::$UserAccountRepository->CreateUserAccount($userAccount, $password);
 				?>
 				<h2>Username:<?php echo $userAccount->getUsername(); ?></h2>
 				<h2>Name:<?php echo $userAccount->getName(); ?></h2>

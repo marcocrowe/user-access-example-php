@@ -1,7 +1,4 @@
-<?php
-require_once("php/pagesupport/RegisterHtmlTagNames.php");
-require_once("php/WebPages.php");
-?>
+<?php require_once("app/require_once.php"); ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -16,7 +13,7 @@ require_once("php/WebPages.php");
 		<!--<link rel="shortcut icon" href="resource/icon/favicon.ico" />-->
 		<!--</Icon>-->
 		<!--<Stylesheets OrderIsImportant="true">-->
-		<link rel="stylesheet" href="resource/css/stylesheet.css" />
+		<link rel="stylesheet" href="src/css/stylesheet.css" />
 		<!--</Stylesheets>-->
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	</head>

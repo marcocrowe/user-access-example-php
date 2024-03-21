@@ -1,9 +1,5 @@
-<?php
-declare(strict_types=1);
-require_once("php/DataObjects/UserAccountLoginResult.php");
-require_once("php/pagesupport/LoginHtmlTagNames.php");
-require_once("php/Program.php");
-?>
+<?php require_once("app/require_once.php"); ?>
+<!DOCTYPE html>
 <html>
     <head>
         <title>User Login Service</title>
@@ -17,7 +13,7 @@ require_once("php/Program.php");
 		<!--<link rel="shortcut icon" href="resource/icon/favicon.ico" />-->
 		<!--</Icon>-->
 		<!--<Stylesheets OrderIsImportant="true">-->
-		<link rel="stylesheet" href="resource/css/stylesheet.css" />
+		<link rel="stylesheet" href="src/css/stylesheet.css" />
 		<!--</Stylesheets>-->
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
@@ -46,7 +42,7 @@ require_once("php/Program.php");
 				<h2>Username:<?php echo $username; ?></h2>
 				<h2>Password:<?php echo $password; ?></h2>
 				<?php
-				$userAccount = $userDatabase->GetUserAccountByCredentials($username, $password);
+				$userAccount = Application::$UserAccountRepository->GetUserAccountByCredentials($username, $password);
 				$loginResult = UserAccountLoginResult::GetLoginResult($userAccount);
 				if($loginResult == UserAccountLoginResult::Success)
 					UserSessionManagement::LoginUser($userAccount);

@@ -1,12 +1,4 @@
-<?php
-require_once("php/pagesupport/RegisterHtmlTagNames.php");
-require_once("php/pagesupport/LoginHtmlTagNames.php");
-
-require_once("php/pagesupport/UserAccountHtmlTagNames.php");
-require_once("php/pagesupport/UserAccountEditHtmlTagNames.php");
-
-require_once("php/Program.php");
-?>
+<?php require_once("app/require_once.php"); ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,7 +13,7 @@ require_once("php/Program.php");
 		<!--<link rel="shortcut icon" href="resource/icon/favicon.ico" />-->
 		<!--</Icon>-->
 		<!--<Stylesheets OrderIsImportant="true">-->
-		<link rel="stylesheet" href="resource/css/stylesheet.css" />
+		<link rel="stylesheet" href="src/css/stylesheet.css" />
 		<!--</Stylesheets>-->
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	</head>
@@ -42,7 +34,7 @@ require_once("php/Program.php");
 			<?php UserSessionManagement::HandleUserAccess() ?>
 			<?php
 			$id = filter_input(INPUT_GET, UserAccountHtmlTagNames::Id);
-			$userAccount = $userDatabase->GetUserAccountById($id);
+			$userAccount = Application::$UserAccountRepository->GetUserAccountById($id);
 
 			if($userAccount != null)
 			{

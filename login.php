@@ -1,7 +1,4 @@
-<?php
-require_once("php/Program.php");
-require_once("php/pagesupport/LoginHtmlTagNames.php");
-?>
+<?php require_once("app/require_once.php"); ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -16,7 +13,7 @@ require_once("php/pagesupport/LoginHtmlTagNames.php");
 		<!--<link rel="shortcut icon" href="resource/icon/favicon.ico" />-->
 		<!--</Icon>-->
 		<!--<Stylesheets OrderIsImportant="true">-->
-		<link rel="stylesheet" href="resource/css/stylesheet.css" />
+		<link rel="stylesheet" href="src/css/stylesheet.css" />
 		<!--</Stylesheets>-->
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	</head>
@@ -61,7 +58,7 @@ require_once("php/pagesupport/LoginHtmlTagNames.php");
 				</tr>
 				<tr>
 					<td>Username:</td>
-					<td><?php echo $userDatabase->getActiveUser()->getUsername(); ?></td>
+					<td><?php echo Application::$UserAccountRepository->getActiveUser()->getUsername(); ?></td>
 				</tr>
 				<tr>
 					<td>Password:</td>
@@ -72,7 +69,7 @@ require_once("php/pagesupport/LoginHtmlTagNames.php");
 				</tr>
 				<tr>
 					<td>Username:</td>
-					<td><?php echo $userDatabase->getDisabledUser()->getUsername(); ?></td>
+					<td><?php echo Application::$UserAccountRepository->getDisabledUser()->getUsername(); ?></td>
 				</tr>
 				<tr>
 					<td>Password:</td>
