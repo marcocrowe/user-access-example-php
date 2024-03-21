@@ -24,16 +24,17 @@ require_once("src/Program.php");
 			<h1>PHP Access Web Example</h1>
 			<nav>
 				<ul>
-					<li><a href="login.php">Login</a></li>
-					<li><a href="register.php">Register</a></li>
-					<li><a href="userlist.php">Users</a></li>
-					<li><a href="logout.php">Logout</a></li>
+					<li><a href="<?php echo WebPages::login; ?>">Login</a></li>
+					<li><a href="<?php echo WebPages::register; ?>">Register</a></li>
+					<li><a href="<?php echo WebPages::userAccounts; ?>">Users</a></li>
+					<li><a href="<?php echo WebPages::logout; ?>">Logout</a></li>
 				</ul>
 			</nav>
 		</header>
 		<main>
 			<?php
-			if(isset(filter_input(INPUT_POST, RegisterHtmlTagNames::RegisterButton)))
+			$registerButton = filter_input(INPUT_POST, RegisterHtmlTagNames::RegisterButton);
+			if(isset($registerButton))
 			{
 				?>
 				<h2>Register Button Pressed</h2>
@@ -47,8 +48,8 @@ require_once("src/Program.php");
 
 				$userDatabase->CreateUserAccount($userAccount, $password);
 				?>
-				<h2>Username:<?php echo $username; ?></h2>
-				<h2>email:<?php echo $email; ?></h2>
+				<h2>Username:<?php echo $userAccount->getUsername(); ?></h2>
+				<h2>email:<?php echo $userAccount->getEmail(); ?></h2>
 				<h2>Password:<?php echo $password; ?></h2>
 				<h2>Confirm Password:<?php echo $confirmPassword; ?></h2>
 				<?php

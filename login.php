@@ -25,28 +25,28 @@ require_once("src/pagesupport/LoginHtmlTagNames.php");
 			<h1>PHP Access Web Example</h1>
 			<nav>
 				<ul>
-					<li><a href="login.php">Login</a></li>
-					<li><a href="register.php">Register</a></li>
-					<li><a href="userlist.php">Users</a></li>
-					<li><a href="logout.php">Logout</a></li>
+					<li><a href="<?php echo WebPages::login; ?>">Login</a></li>
+					<li><a href="<?php echo WebPages::register; ?>">Register</a></li>
+					<li><a href="<?php echo WebPages::userAccounts; ?>">Users</a></li>
+					<li><a href="<?php echo WebPages::logout; ?>">Logout</a></li>
 				</ul>
 			</nav>
 		</header>
 		<main>
 			<h2>Login</h2>
-			<form action="<?php echo LoginHtmlTagNames::FormActionPage ?>" method="post">
+			<form action="<?php echo LoginHtmlTagNames::FormActionPage; ?>" method="post">
 				<table>
 					<tr>
 						<td>Username:</td>
-						<td><input name="<?php echo LoginHtmlTagNames::UsernameInput ?>" type="text" /></td>
+						<td><input name="<?php echo LoginHtmlTagNames::UsernameInput; ?>" type="text" /></td>
 					</tr>
 					<tr>
 						<td>Password:</td>
-						<td><input name="<?php echo LoginHtmlTagNames::PasswordInput ?>" type="password" /></td>
+						<td><input name="<?php echo LoginHtmlTagNames::PasswordInput; ?>" type="password" /></td>
 					</tr>
 					<tr>
 						<td></td>
-						<td><input name="<?php echo LoginHtmlTagNames::LoginButton ?>" type="submit" value="Login" /></td>
+						<td><input name="<?php echo LoginHtmlTagNames::LoginButton; ?>" type="submit" value="Login" /></td>
 					</tr>
 					<tr>
 						<td></td>
@@ -61,22 +61,22 @@ require_once("src/pagesupport/LoginHtmlTagNames.php");
 				</tr>
 				<tr>
 					<td>Username:</td>
-					<td><?php echo $userDatabase->getActiveUser()->getUsername() ?></td>
+					<td><?php echo $userDatabase->getActiveUser()->getUsername(); ?></td>
 				</tr>
 				<tr>
 					<td>Password:</td>
-					<td><?php echo UserAccountSessionRepository::DefaultPassowrd ?></td>
+					<td><?php echo UserAccountSessionRepository::DefaultPassowrd; ?></td>
 				</tr>
 				<tr>
 					<td colspan="2">Disabled User Account</td>
 				</tr>
 				<tr>
 					<td>Username:</td>
-					<td><?php echo $userDatabase->getDisabledUser()->getUsername() ?></td>
+					<td><?php echo $userDatabase->getDisabledUser()->getUsername(); ?></td>
 				</tr>
 				<tr>
 					<td>Password:</td>
-					<td><?php echo UserAccountSessionRepository::DefaultPassowrd ?></td>
+					<td><?php echo UserAccountSessionRepository::DefaultPassowrd; ?></td>
 				</tr>
 				<tr>
 					<td colspan="2">Incorrect Login details</td>

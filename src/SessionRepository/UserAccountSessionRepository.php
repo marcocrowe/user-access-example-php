@@ -19,6 +19,17 @@ class UserAccountSessionRepository implements UserAccountRepository
 	//
 	//	Public Methods
 	//
+	public function GetUserAccountById($id): ?UserAccount
+	{
+		foreach($this->users as $user)
+		{
+			if($user->getId() == $id)
+			{
+				return $user;
+			}
+		}
+		return null;
+	}
 	public function Login(string $username, string $password): ?UserAccount
 	{
 		foreach($this->users as $user)
@@ -57,7 +68,7 @@ class UserAccountSessionRepository implements UserAccountRepository
 	//
 	//	Private Fields
 	//
-	private $activeUser;
-	private $disabledUser;
-	private $users;
+	private UserAccount $activeUser;
+	private UserAccount $disabledUser;
+	private array $users;
 }

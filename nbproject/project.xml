@@ -7,7 +7,12 @@
         </data>
         <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
             <word>Accoun</word>
+            <word>favicon</word>
+            <word>href</word>
+            <word>ico</word>
+            <word>OrderIsImportant</word>
             <word>PHP</word>
+            <word>Stylesheets</word>
         </spellchecker-wordlist>
     </configuration>
 </project>

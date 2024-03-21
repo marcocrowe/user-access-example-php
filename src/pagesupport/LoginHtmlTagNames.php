@@ -2,7 +2,7 @@
 
 class LoginHtmlTagNames
 {
-	const FormActionPage = "UserAccessService.php";
+	const FormActionPage = WebPages::UserAccessService;
 	const LoginButton = "LoginButton";
 	const PasswordInput = "PasswordInput";
 	const UsernameInput = "ClientUsernameInput";

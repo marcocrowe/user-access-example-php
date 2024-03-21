@@ -6,7 +6,6 @@ class UserAccount
 {
 	function __construct()
 	{
-		
 	}
 	public static function Construct(bool $active, int $id, string $email, string $username): UserAccount
 	{

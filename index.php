@@ -1,7 +1,11 @@
+<?php
+require_once("src/Program.php");
+require_once("src/pagesupport/LoginHtmlTagNames.php");
+?>
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>PHP User Access Web Example</title>
+		<title>PHP User Access Web Example : Index</title>
 		<!--<Meta Content>-->
 		<meta name="author" content="Mark Crowe">
 		<meta name="description" content="PHP Access Web Example">
@@ -18,13 +22,13 @@
 	</head>
 	<body>
 		<header>
-			<h1>PHP Access Web Example</h1>
+			<h1>PHP Access Web Example : Index</h1>
 			<nav>
 				<ul>
-					<li><a href="login.php">Login</a></li>
-					<li><a href="register.php">Register</a></li>
-					<li><a href="userlist.php">Users</a></li>
-					<li><a href="logout.php">Logout</a></li>
+					<li><a href="<?php echo WebPages::login; ?>">Login</a></li>
+					<li><a href="<?php echo WebPages::register; ?>">Register</a></li>
+					<li><a href="<?php echo WebPages::userAccounts; ?>">Users</a></li>
+					<li><a href="<?php echo WebPages::logout; ?>">Logout</a></li>
 				</ul>
 			</nav>
 		</header>

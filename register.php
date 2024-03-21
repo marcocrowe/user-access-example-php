@@ -1,5 +1,6 @@
 <?php
 require_once("src/pagesupport/RegisterHtmlTagNames.php");
+require_once("src/WebPages.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,10 +25,10 @@ require_once("src/pagesupport/RegisterHtmlTagNames.php");
 			<h1>PHP Access Web Example</h1>
 			<nav>
 				<ul>
-					<li><a href="login.php">Login</a></li>
-					<li><a href="register.php">Register</a></li>
-					<li><a href="userlist.php">Users</a></li>
-					<li><a href="logout.php">Logout</a></li>
+					<li><a href="<?php echo WebPages::login; ?>">Login</a></li>
+					<li><a href="<?php echo WebPages::register; ?>">Register</a></li>
+					<li><a href="<?php echo WebPages::userAccounts; ?>">Users</a></li>
+					<li><a href="<?php echo WebPages::logout; ?>">Logout</a></li>
 				</ul>
 			</nav>
 		</header>

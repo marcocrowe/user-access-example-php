@@ -10,7 +10,7 @@ class UserSessionManagement
 	{
 		if(!self::UserIsLoggedIn())
 		{
-			echo "<h1>No User logged in, redirecting...<h1>";
+			echo "<h1>No User logged in, redirecting... redirect failed.  Security breached.<h1>";
 		}
 	}
 	public static function UserIsLoggedIn(): bool

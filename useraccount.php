@@ -1,5 +1,6 @@
 <?php
 require_once("src/pagesupport/RegisterHtmlTagNames.php");
+require_once("src/pagesupport/UserAccountHtmlTagNames.php");
 require_once("src/Program.php");
 ?>
 <!DOCTYPE html>
@@ -25,39 +26,50 @@ require_once("src/Program.php");
 			<h1>PHP Access Web Example</h1>
 			<nav>
 				<ul>
-					<li><a href="login.php">Login</a></li>
-					<li><a href="register.php">Register</a></li>
-					<li><a href="userlist.php">Users</a></li>
-					<li><a href="logout.php">Logout</a></li>
+					<li><a href="<?php echo WebPages::login; ?>">Login</a></li>
+					<li><a href="<?php echo WebPages::register; ?>">Register</a></li>
+					<li><a href="<?php echo WebPages::userAccounts; ?>">Users</a></li>
+					<li><a href="<?php echo WebPages::logout; ?>">Logout</a></li>
 				</ul>
 			</nav>
 		</header>
 		<main>
+			<h2>User Account Details</h2>
 			<?php UserSessionManagement::HandleUserAccess() ?>
-			<h2>Users</h2>
-			<table>
-				<thead>
-					<tr>
-						<th>Username</th>
-						<th>e-mail</th>
-						<th>Active</th>
-						<th>&nbsp;</th>
-					</tr>
-				</thead>
-				<?php
-				foreach($userDatabase->GetUserAccounts() as $user)
-				{
-					?>
-					<tr>
-						<td><?php echo $user->getUsername(); ?></td>
-						<td><?php echo $user->getEmail(); ?></td>
-						<td><?php echo json_encode($user->getActive()); ?></td>
-						<td><a href="useredit.php?id=<?php echo $user->getId(); ?>">edit</a></td>
-					</tr>
-					<?php
-				}
+			<?php
+			$id = filter_input(INPUT_GET, UserAccountHtmlTagNames::Id);
+			$userAccount = $userDatabase->GetUserAccountById($id);
+
+			if($userAccount != null)
+			{
 				?>
-			</table>
+				<table>
+					<tr>
+						<th>Username:</th>
+						<td><?php echo $userAccount->getUsername(); ?></td>
+					</tr>
+					<tr>
+						<th>Name:</th>
+						<td><?php echo $userAccount->getName(); ?></td>
+					</tr>
+					<tr>
+						<th>e-mail:</th>
+						<td><?php echo $userAccount->getEmail(); ?></td>
+					</tr>
+					<tr>
+						<th>Active:</th>
+						<td><?php echo json_encode($userAccount->getActive()); ?></td>
+					</tr>
+				</table>
+				<?php
+			}
+			else
+			{
+				?>
+				<h3>No User for Id(<?php echo $id; ?>) was found.</h3>
+				<?php
+			}
+			?>
 		</main>
     </body>
 </html>

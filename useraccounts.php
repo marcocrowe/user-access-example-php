@@ -1,12 +1,12 @@
 <?php
-declare(strict_types=1);
-require_once("src/DataObjects/UserAccountLoginResult.php");
-require_once("src/pagesupport/LoginHtmlTagNames.php");
+require_once("src/pagesupport/RegisterHtmlTagNames.php");
+require_once("src/pagesupport/UserAccountHtmlTagNames.php");
 require_once("src/Program.php");
 ?>
+<!DOCTYPE html>
 <html>
     <head>
-        <title>User Login Service</title>
+		<title>PHP Access Web Example: Login</title>
 		<!--<Meta Content>-->
 		<meta name="author" content="Mark Crowe">
 		<meta name="description" content="PHP Access Web Example">
@@ -20,8 +20,8 @@ require_once("src/Program.php");
 		<link rel="stylesheet" href="resource/css/stylesheet.css" />
 		<!--</Stylesheets>-->
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    </head>
-    <body>
+	</head>
+	<body>
 		<header>
 			<h1>PHP Access Web Example</h1>
 			<nav>
@@ -34,30 +34,31 @@ require_once("src/Program.php");
 			</nav>
 		</header>
 		<main>
-			<?php
-			if(filter_input(INPUT_POST, LoginHtmlTagNames::LoginButton) != null)
-			{
-				?>
-				<h2>Login Button Pressed</h2>
+			<?php UserSessionManagement::HandleUserAccess() ?>
+			<h2>Users</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Username</th>
+						<th>e-mail</th>
+						<th>Active</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
 				<?php
-				$username = filter_input(INPUT_POST, LoginHtmlTagNames::UsernameInput);
-				$password = filter_input(INPUT_POST, LoginHtmlTagNames::PasswordInput);
+				foreach($userDatabase->GetUserAccounts() as $user)
+				{
+					?>
+					<tr>
+						<td><?php echo $user->getUsername(); ?></td>
+						<td><?php echo $user->getEmail(); ?></td>
+						<td><?php echo json_encode($user->getActive()); ?></td>
+						<td><a href="<?php echo WebPages::userAccount . "?" . UserAccountHtmlTagNames::Id . "=" . $user->getId(); ?>">view</a></td>
+					</tr>
+					<?php
+				}
 				?>
-				<h2>Username:<?php echo $username; ?></h2>
-				<h2>Password:<?php echo $password; ?></h2>
-				<?php
-				$userAccount = $userDatabase->Login($username, $password);
-				$loginResult = UserAccountLoginResult::GetLoginResult($userAccount);
-				if($loginResult == UserAccountLoginResult::Success)
-					UserSessionManagement::LoginUser($userAccount);
-				$loginResultMessage = UserAccountLoginResult::GetLoginMessage($loginResult);
-				?>
-				<h3>
-					<?php echo $loginResultMessage ?>
-				</h3>
-				<?php
-			}
-			?>
+			</table>
 		</main>
     </body>
 </html>
