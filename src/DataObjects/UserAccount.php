@@ -8,10 +8,11 @@ class UserAccount
 	{
 		
 	}
-	public static function Construct(bool $active, string $email, string $username): UserAccount
+	public static function Construct(bool $active, int $id, string $email, string $username): UserAccount
 	{
 		$userAccount = new UserAccount();
 		$userAccount->active = $active;
+		$userAccount->id = $id;
 		$userAccount->email = $email;
 		$userAccount->username = $username;
 		return $userAccount;

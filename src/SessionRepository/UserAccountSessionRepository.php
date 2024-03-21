@@ -8,8 +8,8 @@ class UserAccountSessionRepository implements UserAccountRepository
 {
 	function __construct()
 	{
-		$this->activeUser = UserAccount::Construct(true, "user@noreply.com", "user");
-		$this->disabledUser = UserAccount::Construct(false, "user1@noreply.com", "user1");
+		$this->activeUser = UserAccount::Construct(true, 1, "user@noreply.com", "user");
+		$this->disabledUser = UserAccount::Construct(false, 2, "user1@noreply.com", "user1");
 		$this->users = array($this->activeUser, $this->disabledUser);
 	}
 	//
