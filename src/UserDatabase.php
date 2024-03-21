@@ -5,29 +5,36 @@ require_once("UserAccount.php");
 class UserDatabase
 {
 
-//private $user = new UserAccount("user", "user@roreply.com", true);
+	const DefaultPassowrd = "password";
+
+	function __construct()
+	{
+		$this->activeUser = new UserAccount("user", "user@roreply.com", true);
+		$this->disabledUser = new UserAccount("user1", "user@roreply.comcom", false);
+
+		$this->users = array($this->activeUser, $this->disabledUser);
+	}
+
+	private $activeUser;
+	private $disabledUser;
+	private $users;
+
 //private $users = array(new UserAccount());
 
 	function Login($username, $password)
 	{
-		$user = new UserAccount("user", "user@roreply.com", true);
-		$disabledUser = new UserAccount("user1", "user@roreply.com", false);
-
-		if (strcmp($username, $user->getUsername()) == 0 && strcmp($password, "password") == 0)
+		foreach ($this->users as $user)
 		{
-			return $user;
-		} else if (($username == $disabledUser->getUsername() && $password == "password"))
-		{
-			return $disabledUser;
-		} else
-		{
-			return null;
+			if (strcmp($username, $user->getUsername()) == 0 && strcmp($password, self::DefaultPassowrd) == 0)
+				return $user;
 		}
+		return null;
 	}
 
 	function Register($username, $email, $password)
 	{
-		
+		$newUser = new UserAccount($username, $password, true);
+		array_push($this->users, $newUser);
 	}
 
 }
