@@ -15,7 +15,7 @@ abstract class Application
 	/**
 	 * Main Call to start application
 	 */
-	public static function Main()
+	public static function main()
 	{
 		session_start();
 		//$_SESSION[SessionKeys::UserDatabase] = null;
@@ -33,4 +33,4 @@ abstract class Application
 //
 //	Application start
 //
-Application::Main();
+Application::main();
