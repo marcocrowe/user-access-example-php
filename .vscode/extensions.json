@@ -1,0 +1,9 @@
+{
+	"recommendations": [
+		"xdebug.php-debug",
+		"gruntfuggly.todo-tree",
+		"wmaurer.change-case",
+		"maptz.camelcasenavigation",
+		"sonarsource.sonarlint-vscode"
+	]
+}
