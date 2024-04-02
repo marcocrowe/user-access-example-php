@@ -2,23 +2,20 @@
 <?php
 use UserAccessExample\Application;
 use UserAccessExample\UserSessionManagement;
+use UserAccessExample\Web\WebPages;
+use UserAccessExample\Web\UserAccountEditHtmlTagNames;
+use UserAccessExample\Web\UserAccountHtmlTagNames;
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
 		<title>PHP Access Web Example: Login</title>
-		<!--<Meta Content>-->
 		<meta name="author" content="Mark Crowe">
 		<meta name="description" content="PHP Access Web Example">
 		<meta name="keywords" content="PHP, User, Login, Security, Session, Database, MySQL">
 		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-		<!--</Meta Content>-->
-		<!--<Icon>-->
-		<!--<link rel="shortcut icon" href="resource/icon/favicon.ico" />-->
-		<!--</Icon>-->
-		<!--<Stylesheets OrderIsImportant="true">-->
+		<link rel="shortcut icon" href="resource/icon/favicon.ico" />
 		<link rel="stylesheet" href="src/css/stylesheet.css" />
-		<!--</Stylesheets>-->
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	</head>
 	<body>
@@ -65,7 +62,7 @@ use UserAccessExample\UserSessionManagement;
 						</tr>
 						<tr>
 							<td><label for="<?php echo UserAccountEditHtmlTagNames::ActiveInput; ?>">Active:</label></td>
-							<td><input name="<?php echo UserAccountEditHtmlTagNames::ActiveInput; ?>" type="checkbox" <?php echo $userAccount->getActive() ? "checked" : ""; ?> /></td>
+							<td><input name="<?php echo UserAccountEditHtmlTagNames::ActiveInput; ?>" type="checkbox" <?php echo $userAccount->isActive() ? "checked" : ""; ?> /></td>
 						</tr>
 					</table>
 				</form>

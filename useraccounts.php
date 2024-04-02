@@ -2,6 +2,8 @@
 <?php
 use UserAccessExample\Application;
 use UserAccessExample\UserSessionManagement;
+use UserAccessExample\Web\WebPages;
+use UserAccessExample\Web\UserAccountHtmlTagNames;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +13,7 @@ use UserAccessExample\UserSessionManagement;
 		<meta name="description" content="PHP Access Web Example">
 		<meta name="keywords" content="PHP, User, Login, Security, Session, Database, MySQL">
 		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-		<!--<link rel="shortcut icon" href="resource/icon/favicon.ico" />-->
+		<link rel="shortcut icon" href="resource/icon/favicon.ico" />
 		<link rel="stylesheet" href="src/css/stylesheet.css" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	</head>

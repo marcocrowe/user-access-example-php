@@ -1,5 +1,7 @@
 <?php
 
+namespace UserAccessExample\Web;
+
 class LoginHtmlTagNames
 {
 	public const FormActionPage = WebPages::UserAccessService;

@@ -1,4 +1,5 @@
 <?php
+namespace UserAccessExample\Web;
 
 class WebPages
 {

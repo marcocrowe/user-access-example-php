@@ -1,10 +1,13 @@
-<?php require_once("app/autoload.php"); ?>
+<?php require_once "app/autoload.php"; ?>
 <?php
 use UserAccessExample\Application;
 use UserAccessExample\UserAccountLoginResult;
+use UserAccessExample\UserSessionManagement;
+use UserAccessExample\Web\LoginHtmlTagNames;
+use UserAccessExample\Web\WebPages;
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>User Login Service</title>
 		<!--<Meta Content>-->
@@ -12,13 +15,8 @@ use UserAccessExample\UserAccountLoginResult;
 		<meta name="description" content="PHP Access Web Example">
 		<meta name="keywords" content="PHP, User, Login, Security, Session, Database, MySQL">
 		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-		<!--</Meta Content>-->
-		<!--<Icon>-->
-		<!--<link rel="shortcut icon" href="resource/icon/favicon.ico" />-->
-		<!--</Icon>-->
-		<!--<Stylesheets OrderIsImportant="true">-->
+		<link rel="shortcut icon" href="resource/icon/favicon.ico" />
 		<link rel="stylesheet" href="src/css/stylesheet.css" />
-		<!--</Stylesheets>-->
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>

@@ -2,6 +2,8 @@
 <?php
 use UserAccessExample\Application;
 use UserAccessExample\Repository\Session\UserAccountSessionRepository;
+use UserAccessExample\Web\LoginHtmlTagNames;
+use UserAccessExample\Web\WebPages;
 ?>
 <!DOCTYPE html>
 <html lang="en">
