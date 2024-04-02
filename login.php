@@ -66,7 +66,7 @@ use UserAccessExample\Repository\Session\UserAccountSessionRepository;
 				</tr>
 				<tr>
 					<td>Password:</td>
-					<td><?php echo UserAccountSessionRepository::DefaultPassowrd; ?></td>
+					<td><?php echo UserAccountSessionRepository::DefaultPassword; ?></td>
 				</tr>
 				<tr>
 					<td colspan="2">Disabled User Account</td>
@@ -77,7 +77,7 @@ use UserAccessExample\Repository\Session\UserAccountSessionRepository;
 				</tr>
 				<tr>
 					<td>Password:</td>
-					<td><?php echo UserAccountSessionRepository::DefaultPassowrd; ?></td>
+					<td><?php echo UserAccountSessionRepository::DefaultPassword; ?></td>
 				</tr>
 				<tr>
 					<td colspan="2">Incorrect Login details</td>

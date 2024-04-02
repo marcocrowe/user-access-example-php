@@ -47,10 +47,10 @@ use UserAccessExample\Repository\UserAccount;
 				$password = filter_input(INPUT_POST, RegisterHtmlTagNames::PasswordInput);
 				$confirmPassword = filter_input(INPUT_POST, RegisterHtmlTagNames::ConfirmPasswordInput);
 
-				$userAccount = UserAccount::Construct(true, 0, $email, $username);
+				$userAccount = UserAccount::construct(true, 0, $email, $username);
 				$userAccount->setName($name);
 
-				Application::$UserAccountRepository->CreateUserAccount($userAccount, $password);
+				Application::$UserAccountRepository->createUserAccount($userAccount, $password);
 				?>
 				<h2>Username:<?php echo $userAccount->getUsername(); ?></h2>
 				<h2>Name:<?php echo $userAccount->getName(); ?></h2>

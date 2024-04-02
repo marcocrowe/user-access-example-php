@@ -19,7 +19,7 @@ require_once 'app/Repository/UserAccountRepository.php';
 //
 //	app/Repository.Database.Schema/
 //
-require_once 'app/Repository.Database.Schema/DatabaseSchema.php';
+require_once 'app/RepositoryDatabaseSchema/DatabaseSchema.php';
 //
 //	app/Repository.MySQL/
 //

@@ -2,31 +2,31 @@
 
 namespace UserAccessExample\Repository;
 
+use UserAccessExample\Utilities\PasswordUtility;
+
 class UserAccount
 {
-	function __construct()
-	{
-
-	}
-	public static function Construct(bool $active, int $id, string $email, string $username): UserAccount
+	public static function construct(bool $isActive, int $id, string $email, string $username): UserAccount
 	{
 		$userAccount = new UserAccount();
-		$userAccount->active = $active;
+		$userAccount->isActive = $isActive;
 		$userAccount->id = $id;
 		$userAccount->email = $email;
 		$userAccount->username = $username;
 		return $userAccount;
 	}
-	//
-	//	Public Properties
-	//
-	public function getActive(): bool
-	{
-		return $this->active;
-	}
+	/// Properties ///
+	/**
+	 * The Email Address for the User Account
+	 * @return string The Email Address
+	 */
 	public function getEmail(): string
 	{
 		return $this->email;
+	}
+	public function getHashedPassword(): string
+	{
+		return $this->hashedPassword;
 	}
 	public function getId(): int
 	{
@@ -40,13 +40,21 @@ class UserAccount
 	{
 		return $this->username;
 	}
+	public function isActive(): bool
+	{
+		return $this->isActive;
+	}
 	public function setActive(bool $active): void
 	{
-		$this->active = $active;
+		$this->isActive = $active;
 	}
 	public function setEmail(string $email): void
 	{
 		$this->email = $email;
+	}
+	public function setHashedPassword(string $hashedPassword): void
+	{
+		$this->hashedPassword = $hashedPassword;
 	}
 	public function setId(int $id): void
 	{
@@ -60,12 +68,21 @@ class UserAccount
 	{
 		$this->username = $username;
 	}
+	/**
+	 * Sets the password for the User Account
+	 * @param string $password The password to set
+	 */
+	public function setPassword(string $password): void
+	{
+		$this->hashedPassword = PasswordUtility::hashPassword($password);
+	}
 	//
-	//	Private Fields
+	// Private Fields
 	//
-	private bool $active = true;
+	private bool $isActive = true;
 	private string $email = "";
 	private int $id = 0;
 	private string $name = "";
 	private string $username = "";
+	private string $hashedPassword = "";
 }
