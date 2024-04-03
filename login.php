@@ -61,7 +61,7 @@ use UserAccessExample\Web\WebPages;
             </tr>
             <tr>
                 <th scope="row">Username:</td>
-                <td><?php echo Application::$UserAccountRepository->getActiveUser()->getUsername(); ?></td>
+                <td><?php echo Application::$getUserAccountRepository()->getActiveUser()->getUsername(); ?></td>
             </tr>
             <tr>
                 <th scope="row">Password:</td>
@@ -72,7 +72,7 @@ use UserAccessExample\Web\WebPages;
             </tr>
             <tr>
                 <th scope="row">Username:</td>
-                <td><?php echo Application::$UserAccountRepository->getDisabledUser()->getUsername(); ?></td>
+                <td><?php echo Application::$getUserAccountRepository()->getDisabledUser()->getUsername(); ?></td>
             </tr>
             <tr>
                 <th scope="row">Password:</td>

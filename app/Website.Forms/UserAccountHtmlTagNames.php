@@ -1,7 +1,8 @@
 <?php
+
 namespace UserAccessExample\Web;
 
 class UserAccountHtmlTagNames
 {
-	public const Id = "Id";
+    public const Id = "Id";
 }
