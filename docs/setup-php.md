@@ -31,3 +31,21 @@ To run a PHP server, open the directory where your PHP files are located and run
 ```bash
 php -S localhost:8000
 ```
+
+## Composer
+
+Composer is a dependency manager for PHP. To install Composer, download the installer from the [Composer website](https://getcomposer.org/download/).
+
+Add the Composer executable to the environment path. For example, if you installed Composer in the following directory:
+
+```txt
+%USERPROFILE%\AppData\Roaming\Composer
+```
+
+```txt
+C:\ProgramData\ComposerSetup\bin
+```
+
+After installing Composer, you can run the following command to install dependencies:
+
+```bash

@@ -2,7 +2,7 @@
 <?php
 
 use UserAccessExample\Application;
-use UserAccessExample\Repository\UserAccount;
+use UserAccessExample\DTOs\UserAccount;
 use UserAccessExample\Web\WebPages;
 use UserAccessExample\Web\RegisterHtmlTagNames;
 ?>
@@ -48,7 +48,7 @@ use UserAccessExample\Web\RegisterHtmlTagNames;
             $userAccount = UserAccount::construct(true, 0, $email, $username);
             $userAccount->setName($name);
 
-            Application::$UserAccountRepository->createUserAccount($userAccount, $password);
+            Application::getUserAccountRepository()->createUserAccount($userAccount, $password);
             ?>
             <h2>Username:<?php echo $userAccount->getUsername(); ?></h2>
             <h2>Name:<?php echo $userAccount->getName(); ?></h2>

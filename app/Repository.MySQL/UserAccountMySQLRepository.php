@@ -2,11 +2,12 @@
 
 namespace UserAccessExample\Repository\MySQL;
 
-use UserAccessExample\Repository\UserAccount;
+use UserAccessExample\DTOs\UserAccount;
 use UserAccessExample\Repository\UserAccountRepository;
-use UserAccessExample\RepositoryDatabaseSchema\DatabaseSchema\UserAccountTable;
+use UserAccessExample\Repository\UserAccountTable;
 
-use PDO;// TO: MC: Fix imports
+
+use PDO; // TO: MC: Fix imports
 /**
  * Repository provides MySQL CRUD functionality for User Accounts
  */
@@ -18,7 +19,7 @@ class UserAccountMySQLRepository implements UserAccountRepository
         $this->userAccounts = array();
     }
     //
-    //	Public Methods
+    // Public Methods
     //
     public function createUserAccount(UserAccount $userAccount, string $password): bool
     {
@@ -58,10 +59,10 @@ class UserAccountMySQLRepository implements UserAccountRepository
         $pdoStatement = $this->connection->prepare($sqlCommandText);
         $pdoStatement->execute($sqlCommandParameters);
         $rowCount = $pdoStatement->rowCount();
-        $datarow = $pdoStatement->fetch();
+        $dataRow = $pdoStatement->fetch();
         $pdoStatement->closeCursor();
 
-        return ($rowCount > 0) ? self::Transform($datarow) : null;
+        return ($rowCount > 0) ? self::Transform($dataRow) : null;
     }
     public function getUserAccountByCredentials(string $username, string $password): ?UserAccount
     {
@@ -72,10 +73,10 @@ class UserAccountMySQLRepository implements UserAccountRepository
         $pdoStatement = $this->connection->prepare($sqlCommandText);
         $pdoStatement->execute($sqlCommandParameters);
         $rowCount = $pdoStatement->rowCount();
-        $datarow = $pdoStatement->fetch();
+        $dataRow = $pdoStatement->fetch();
         $pdoStatement->closeCursor();
 
-        return ($rowCount > 0) ? self::Transform($datarow) : null;
+        return ($rowCount > 0) ? self::Transform($dataRow) : null;
     }
     public function getUserAccounts(): array
     {
@@ -111,7 +112,7 @@ class UserAccountMySQLRepository implements UserAccountRepository
         return $success;
     }
     //
-    //	Protected Static Methods
+    // Protected Static Methods
     //
     protected static function hashPassword(string $password): string
     {
@@ -130,7 +131,7 @@ class UserAccountMySQLRepository implements UserAccountRepository
         return $userAccount;
     }
     //
-    //	Private Fields
+    // Private Fields
     //
     private PDO $connection;
     private const hashAlgorithm = "ripemd160";

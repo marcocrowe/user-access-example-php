@@ -5,7 +5,7 @@ namespace UserAccessExample\Repository;
 class UserAccessWebExampleDatabase
 {
     public const UserAccount = "UserAccount";
-	public const GROUP = "Group";
+    public const GROUP = "Group";
 }
 
 class UserAccountTable
@@ -20,6 +20,6 @@ class UserAccountTable
 
 class GroupTable
 {
-	public const ID = "Id";
-	public const NAME = "Name";
+    public const ID = "Id";
+    public const NAME = "Name";
 }

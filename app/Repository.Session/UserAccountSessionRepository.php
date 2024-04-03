@@ -2,7 +2,7 @@
 
 namespace UserAccessExample\Repository\Session;
 
-use UserAccessExample\Repository\UserAccount;
+use UserAccessExample\DTOs\UserAccount;
 use UserAccessExample\Repository\UserAccountRepository;
 
 /**
@@ -78,15 +78,19 @@ class UserAccountSessionRepository implements UserAccountRepository
     {
         return $this->disabledUser;
     }
+    /**
+     * Get all User Accounts
+     * @return UserAccount[] All User Accounts
+     */
     public function getUserAccounts(): array
     {
         return $this->users;
     }
 
-	public function updateUserAccount(UserAccount $userAccount)
-	{
-		//TODO: Implement updateUserAccount() method.
-	}
+    public function updateUserAccount(UserAccount $userAccount)
+    {
+        //TODO: Implement updateUserAccount() method.
+    }
     //
     // Private Fields
     //
