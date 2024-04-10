@@ -23,7 +23,7 @@ class UserAccountMySQLRepository implements UserAccountRepository
     //
     public function createUserAccount(UserAccount $userAccount, string $password): bool
     {
-        $sqlCommandText = "CreateUserAccount(?, ?, ?, ?, ?);";
+        $sqlCommandText = "CALL CreateUserAccount(?, ?, ?, ?, ?);";
         $sqlCommandParameters = [
             $userAccount->isActive(),
             $userAccount->getEmail(),
@@ -43,7 +43,7 @@ class UserAccountMySQLRepository implements UserAccountRepository
     }
     public function deleteUserAccountById(int $userAccountId)
     {
-        $sqlCommandText = "DeleteUserAccountById(?);";
+        $sqlCommandText = "CALL DeleteUserAccountById(?);";
         $sqlCommandParameters = [$userAccountId];
 
         $pdoStatement = $this->connection->prepare($sqlCommandText);
@@ -53,7 +53,7 @@ class UserAccountMySQLRepository implements UserAccountRepository
     }
     public function getUserAccountById(int $userAccountId): ?UserAccount
     {
-        $sqlCommandText = "GetUserAccountById(?);";
+        $sqlCommandText = "CALL GetUserAccountById(?);";
         $sqlCommandParameters = [$userAccountId];
 
         $pdoStatement = $this->connection->prepare($sqlCommandText);
@@ -80,7 +80,7 @@ class UserAccountMySQLRepository implements UserAccountRepository
     }
     public function getUserAccounts(): array
     {
-        $sqlCommandText = "GetUserAccounts();";
+        $sqlCommandText = "CALL GetUserAccounts();";
 
         $pdoStatement = $this->connection->prepare($sqlCommandText);
         $pdoStatement->execute();
@@ -95,7 +95,7 @@ class UserAccountMySQLRepository implements UserAccountRepository
     }
     public function updateUserAccount(UserAccount $userAccount)
     {
-        $sqlCommandText = "UpdateUserAccount(?, ?, ?, ?, ?);";
+        $sqlCommandText = "CALL UpdateUserAccount(?, ?, ?, ?, ?);";
         $sqlCommandParameters = [
             $userAccount->isActive(),
             $userAccount->getEmail(),
