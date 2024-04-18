@@ -1,0 +1,16 @@
+{
+    "name": "marcocrowe/user-access-example-php",
+    "description": "A User access example",
+    "autoload": {
+        "psr-4": {
+            "Marcocrowe\\UserAccessExamplePhp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mark Crowe",
+            "email": "66536097+marcocrowe@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}

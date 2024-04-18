@@ -1,34 +1,32 @@
 <?php
 
-namespace UserAccessExample\Repository\MySQL;
+namespace UserAccessExample\Repository\SqLite;
 
+use PDO;
 use UserAccessExample\DTOs\UserAccount;
 use UserAccessExample\Repository\UserAccountRepository;
 use UserAccessExample\Repository\UserAccountTable;
 
-
-use PDO; // TO: MC: Fix imports
 /**
- * Repository provides MySQL CRUD functionality for User Accounts
+ * Repository provides SqLite CRUD functionality for User Accounts
  */
-class UserAccountMySQLRepository implements UserAccountRepository
+class UserAccountSqLiteRepository implements UserAccountRepository
 {
+    private PDO $connection;
     public function __construct(PDO $connection)
     {
         $this->connection = $connection;
-        $this->userAccounts = array();
     }
     //
     // Public Methods
     //
     public function createUserAccount(UserAccount $userAccount, string $password): bool
     {
-        $sqlCommandText = "CALL CreateUserAccount(?, ?, ?, ?, ?);";
+        $sqlCommandText = "CreateUserAccount(?, ?, ?, ?, ?);";
         $sqlCommandParameters = [
             $userAccount->isActive(),
             $userAccount->getEmail(),
             $userAccount->getName(),
-            self::HashPassword($password),
             $userAccount->getUsername()
         ];
 
@@ -43,7 +41,7 @@ class UserAccountMySQLRepository implements UserAccountRepository
     }
     public function deleteUserAccountById(int $userAccountId)
     {
-        $sqlCommandText = "CALL DeleteUserAccountById(?);";
+        $sqlCommandText = "DeleteUserAccountById(?);";
         $sqlCommandParameters = [$userAccountId];
 
         $pdoStatement = $this->connection->prepare($sqlCommandText);
@@ -53,7 +51,7 @@ class UserAccountMySQLRepository implements UserAccountRepository
     }
     public function getUserAccountById(int $userAccountId): ?UserAccount
     {
-        $sqlCommandText = "CALL GetUserAccountById(?);";
+        $sqlCommandText = "GetUserAccountById(?);";
         $sqlCommandParameters = [$userAccountId];
 
         $pdoStatement = $this->connection->prepare($sqlCommandText);
@@ -61,45 +59,61 @@ class UserAccountMySQLRepository implements UserAccountRepository
         $rowCount = $pdoStatement->rowCount();
         $dataRow = $pdoStatement->fetch();
         $pdoStatement->closeCursor();
-
-        return ($rowCount > 0) ? self::Transform($dataRow) : null;
+        if ($rowCount === 0) {
+            return null;
+        }
+        $userAccount = new UserAccount();
+        $userAccount->setId($dataRow[UserAccountTable::Id]);
+        $userAccount->setActive($dataRow[UserAccountTable::Active]);
+        $userAccount->setEmail($dataRow[UserAccountTable::Email]);
+        $userAccount->setName($dataRow[UserAccountTable::Name]);
+        $userAccount->setUsername($dataRow[UserAccountTable::Username]);
+        return $userAccount;
     }
     public function getUserAccountByCredentials(string $username, string $password): ?UserAccount
     {
         $sqlCommandText = "GetUserAccountByCredentials(?, ?);";
-        $sqlCommandParameters = [self::HashPassword($password), $username];
-        //$sqlCommandParameters = [$password, $username];
+        $sqlCommandParameters = [($password), $username];
 
         $pdoStatement = $this->connection->prepare($sqlCommandText);
         $pdoStatement->execute($sqlCommandParameters);
         $rowCount = $pdoStatement->rowCount();
         $dataRow = $pdoStatement->fetch();
         $pdoStatement->closeCursor();
-
-        return ($rowCount > 0) ? self::Transform($dataRow) : null;
+        if ($rowCount === 0) {
+            return null;
+        }
+        $userAccount = new UserAccount();
+        $userAccount->setId($dataRow[UserAccountTable::Id]);
+        $userAccount->setActive($dataRow[UserAccountTable::Active]);
+        $userAccount->setEmail($dataRow[UserAccountTable::Email]);
+        $userAccount->setName($dataRow[UserAccountTable::Name]);
+        $userAccount->setUsername($dataRow[UserAccountTable::Username]);
+        return $userAccount;
     }
-    /**
-     * Get all User Accounts
-     * @return UserAccount[] The User Accounts
-     */
     public function getUserAccounts(): array
     {
-        $sqlCommandText = "CALL GetUserAccounts();";
+        $sqlCommandText = "GetUserAccounts();";
 
         $pdoStatement = $this->connection->prepare($sqlCommandText);
         $pdoStatement->execute();
 
         $userAccountList = array();
         foreach ($pdoStatement as $dataRow) {
-            $userAccountList[] = self::Transform($dataRow);
+            $userAccount = new UserAccount();
+            $userAccount->setId($dataRow[UserAccountTable::Id]);
+            $userAccount->setActive($dataRow[UserAccountTable::Active]);
+            $userAccount->setEmail($dataRow[UserAccountTable::Email]);
+            $userAccount->setName($dataRow[UserAccountTable::Name]);
+            $userAccount->setUsername($dataRow[UserAccountTable::Username]);
+            $userAccountList[] = $userAccount;
         }
         $pdoStatement->closeCursor();
-
         return $userAccountList;
     }
     public function updateUserAccount(UserAccount $userAccount)
     {
-        $sqlCommandText = "CALL UpdateUserAccount(?, ?, ?, ?, ?);";
+        $sqlCommandText = "UpdateUserAccount(?, ?, ?, ?, ?, ?);";
         $sqlCommandParameters = [
             $userAccount->isActive(),
             $userAccount->getEmail(),
@@ -108,36 +122,9 @@ class UserAccountMySQLRepository implements UserAccountRepository
             $userAccount->getUsername()
         ];
 
-        //self::HashPassword($password),
-
         $pdoStatement = $this->connection->prepare($sqlCommandText);
         $success = $pdoStatement->execute($sqlCommandParameters);
         $pdoStatement->closeCursor();
         return $success;
     }
-    //
-    // Protected Static Methods
-    //
-    protected static function hashPassword(string $password): string
-    {
-        return hash(self::hashAlgorithm, $password);
-    }
-    protected static function transform($dataRow): UserAccount
-    {
-        $userAccount = new UserAccount();
-
-        $userAccount->setActive($dataRow[UserAccountTable::Active]);
-        $userAccount->setEmail($dataRow[UserAccountTable::Email]);
-        $userAccount->setId($dataRow[UserAccountTable::Id]);
-        $userAccount->setName($dataRow[UserAccountTable::Name]);
-        $userAccount->setUsername($dataRow[UserAccountTable::Username]);
-
-        return $userAccount;
-    }
-    //
-    // Private Fields
-    //
-    private PDO $connection;
-    private const hashAlgorithm = "ripemd160";
-    private array $userAccounts;
 }

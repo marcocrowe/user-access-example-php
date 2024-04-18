@@ -1,36 +1,23 @@
-<?php require_once "app/autoload.php"; ?>
 <?php
-use UserAccessExample\Web\WebPages;
-?>
-<!DOCTYPE html>
-<html lang="en">
+// Include routes.php
+$routes = require_once __DIR__ . '/routes.php';
 
-<head>
-    <title>PHP User Access Web Example : Index</title>
-    <!--<Meta Content>-->
-    <meta name="author" content="Mark Crowe">
-    <meta name="description" content="PHP Access Web Example">
-    <meta name="keywords" content="PHP, User, Login, Security, Session, Database, MySQL">
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-    <link rel="shortcut icon" href="resource/icon/favicon.ico" />
-    <link rel="stylesheet" href="src/css/stylesheet.css" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-</head>
+// Handle request and dispatch to appropriate controller method based on the route
+$uri = $_SERVER['REQUEST_URI'];
 
-<body>
-    <header>
-        <h1>PHP Access Web Example : Index</h1>
-        <nav>
-            <ul>
-                <li><a href="<?php echo WebPages::login; ?>">Login</a></li>
-                <li><a href="<?php echo WebPages::register; ?>">Register</a></li>
-                <li><a href="<?php echo WebPages::userAccounts; ?>">Users</a></li>
-                <li><a href="<?php echo WebPages::logout; ?>">Logout</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-    </main>
-</body>
+if (array_key_exists($uri, $routes)) {
+    $controllerAction = $routes[$uri];
+    list($controllerName, $methodName) = explode('@', $controllerAction);
 
-</html>
+    // Include controller file
+    require_once __DIR__ . '/app/WebControllers/' . $controllerName . '.php';
+
+    // Create controller instance
+    $controller = new $controllerName();
+
+    // Call controller method
+    $controller->$methodName();
+} else {
+    // Handle 404 Not Found
+    echo '404 Not Found';
+}

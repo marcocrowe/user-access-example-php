@@ -37,6 +37,13 @@ use UserAccessExample\Web\UserAccountHtmlTagNames;
         <?php UserSessionManagement::handleUserAccess() ?>
         <?php
         $id = filter_input(INPUT_GET, UserAccountHtmlTagNames::Id);
+        if ($id == null) {
+        ?>
+            <h3>No User Id was provided.</h3>
+        <?php
+        }
+        else {
+    
         $userAccount = Application::getUserAccountRepository()->GetUserAccountById($id);
 
         if ($userAccount != null) {
@@ -74,6 +81,7 @@ use UserAccessExample\Web\UserAccountHtmlTagNames;
             <h3>No User for Id(<?php echo $id; ?>) was found.</h3>
         <?php
         }
+    }
         ?>
     </main>
 </body>
